@@ -54,6 +54,8 @@ console.log(brokenInc());
 //WebStorm makes this variable as unused
 var farAway = 1;
 function outer() {
+    console.log(farAway);
+
     var farAway = 2;
 
     function inner() {
@@ -119,12 +121,14 @@ console.log(defaultArgs(5));
 console.log(defaultArgs(10));
 
 function funky(a, b) {
-    a = 2;
-    return arguments[0];
+    arguments[0] = 2;
+    return a;
 }
 
 console.log('funky');
 console.log(funky(4));
+
+//Call and Apply
 
 //Scope comes with us
 function getAdder() {
@@ -155,6 +159,18 @@ function power2(base, exp) {
 
 console.log('Power again');
 console.log(power2(2, 10));
+
+var power3 = function p(base, exp) {
+    if(exp == 0) {
+        return 1;
+    }
+    return base * p(base, exp - 1);
+}
+
+console.log('Power again again');
+console.log(power3(2, 10));
+//This causes an error!
+//console.log(p(2, 10));
 
 //Sometimes recursion isn't obvious!
 function chicken() {
